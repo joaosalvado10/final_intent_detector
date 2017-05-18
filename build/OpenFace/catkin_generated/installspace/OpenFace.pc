@@ -1,0 +1,8 @@
+prefix=/home/jorgematos/image_transport_ws/install
+
+Name: OpenFace
+Description: Description of OpenFace
+Version: 0.0.0
+Cflags: -I/home/jorgematos/image_transport_ws/install/include
+Libs: -L/home/jorgematos/image_transport_ws/install/lib 
+Requires: roscpp rospy std_msgs message_runtime cv_bridge image_transport sensor_msgs

@@ -1,0 +1,11 @@
+to compile
+
+https://github.com/TadasBaltrusaitis/OpenFace/wiki/Unix-Installation
+
+1. compile with release flag in /image_transport_ws dir run:
+$catkin_make -DCMAKE_BUILD_TYPE=Release
+
+2.source the workspace run:
+$source devel/setup.bash
+
+
