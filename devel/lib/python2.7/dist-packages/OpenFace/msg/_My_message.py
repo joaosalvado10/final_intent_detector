@@ -7,7 +7,7 @@ import struct
 
 
 class My_message(genpy.Message):
-  _md5sum = "eaefa0165f2d618047dc9a1f3aa528e7"
+  _md5sum = "6c24d8c3301b17cfb2282a729b262e0a"
   _type = "OpenFace/My_message"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """float64 pose_tra_x
@@ -25,10 +25,15 @@ float64 gaze_1_rot_z
 float64 diff_gaze_x
 float64 diff_gaze_y
 float64 diff_gaze_z
+float64 box_h
+float64 box_w
+float64 box_x
+float64 box_y
 int64 id_model
+
 """
-  __slots__ = ['pose_tra_x','pose_tra_y','pose_tra_z','pose_rot_x','pose_rot_y','pose_rot_z','gaze_0_rot_x','gaze_0_rot_y','gaze_0_rot_z','gaze_1_rot_x','gaze_1_rot_y','gaze_1_rot_z','diff_gaze_x','diff_gaze_y','diff_gaze_z','id_model']
-  _slot_types = ['float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','int64']
+  __slots__ = ['pose_tra_x','pose_tra_y','pose_tra_z','pose_rot_x','pose_rot_y','pose_rot_z','gaze_0_rot_x','gaze_0_rot_y','gaze_0_rot_z','gaze_1_rot_x','gaze_1_rot_y','gaze_1_rot_z','diff_gaze_x','diff_gaze_y','diff_gaze_z','box_h','box_w','box_x','box_y','id_model']
+  _slot_types = ['float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','float64','int64']
 
   def __init__(self, *args, **kwds):
     """
@@ -38,7 +43,7 @@ int64 id_model
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       pose_tra_x,pose_tra_y,pose_tra_z,pose_rot_x,pose_rot_y,pose_rot_z,gaze_0_rot_x,gaze_0_rot_y,gaze_0_rot_z,gaze_1_rot_x,gaze_1_rot_y,gaze_1_rot_z,diff_gaze_x,diff_gaze_y,diff_gaze_z,id_model
+       pose_tra_x,pose_tra_y,pose_tra_z,pose_rot_x,pose_rot_y,pose_rot_z,gaze_0_rot_x,gaze_0_rot_y,gaze_0_rot_z,gaze_1_rot_x,gaze_1_rot_y,gaze_1_rot_z,diff_gaze_x,diff_gaze_y,diff_gaze_z,box_h,box_w,box_x,box_y,id_model
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -77,6 +82,14 @@ int64 id_model
         self.diff_gaze_y = 0.
       if self.diff_gaze_z is None:
         self.diff_gaze_z = 0.
+      if self.box_h is None:
+        self.box_h = 0.
+      if self.box_w is None:
+        self.box_w = 0.
+      if self.box_x is None:
+        self.box_x = 0.
+      if self.box_y is None:
+        self.box_y = 0.
       if self.id_model is None:
         self.id_model = 0
     else:
@@ -95,6 +108,10 @@ int64 id_model
       self.diff_gaze_x = 0.
       self.diff_gaze_y = 0.
       self.diff_gaze_z = 0.
+      self.box_h = 0.
+      self.box_w = 0.
+      self.box_x = 0.
+      self.box_y = 0.
       self.id_model = 0
 
   def _get_types(self):
@@ -110,7 +127,7 @@ int64 id_model
     """
     try:
       _x = self
-      buff.write(_struct_15dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model))
+      buff.write(_struct_19dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -123,8 +140,8 @@ int64 id_model
       end = 0
       _x = self
       start = end
-      end += 128
-      (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model,) = _struct_15dq.unpack(str[start:end])
+      end += 160
+      (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model,) = _struct_19dq.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -138,7 +155,7 @@ int64 id_model
     """
     try:
       _x = self
-      buff.write(_struct_15dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model))
+      buff.write(_struct_19dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -152,11 +169,11 @@ int64 id_model
       end = 0
       _x = self
       start = end
-      end += 128
-      (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model,) = _struct_15dq.unpack(str[start:end])
+      end += 160
+      (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model,) = _struct_19dq.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_15dq = struct.Struct("<15dq")
+_struct_19dq = struct.Struct("<19dq")

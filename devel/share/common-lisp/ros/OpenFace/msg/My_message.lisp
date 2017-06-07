@@ -82,6 +82,26 @@
     :initarg :diff_gaze_z
     :type cl:float
     :initform 0.0)
+   (box_h
+    :reader box_h
+    :initarg :box_h
+    :type cl:float
+    :initform 0.0)
+   (box_w
+    :reader box_w
+    :initarg :box_w
+    :type cl:float
+    :initform 0.0)
+   (box_x
+    :reader box_x
+    :initarg :box_x
+    :type cl:float
+    :initform 0.0)
+   (box_y
+    :reader box_y
+    :initarg :box_y
+    :type cl:float
+    :initform 0.0)
    (id_model
     :reader id_model
     :initarg :id_model
@@ -171,6 +191,26 @@
 (cl:defmethod diff_gaze_z-val ((m <My_message>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader OpenFace-msg:diff_gaze_z-val is deprecated.  Use OpenFace-msg:diff_gaze_z instead.")
   (diff_gaze_z m))
+
+(cl:ensure-generic-function 'box_h-val :lambda-list '(m))
+(cl:defmethod box_h-val ((m <My_message>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader OpenFace-msg:box_h-val is deprecated.  Use OpenFace-msg:box_h instead.")
+  (box_h m))
+
+(cl:ensure-generic-function 'box_w-val :lambda-list '(m))
+(cl:defmethod box_w-val ((m <My_message>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader OpenFace-msg:box_w-val is deprecated.  Use OpenFace-msg:box_w instead.")
+  (box_w m))
+
+(cl:ensure-generic-function 'box_x-val :lambda-list '(m))
+(cl:defmethod box_x-val ((m <My_message>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader OpenFace-msg:box_x-val is deprecated.  Use OpenFace-msg:box_x instead.")
+  (box_x m))
+
+(cl:ensure-generic-function 'box_y-val :lambda-list '(m))
+(cl:defmethod box_y-val ((m <My_message>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader OpenFace-msg:box_y-val is deprecated.  Use OpenFace-msg:box_y instead.")
+  (box_y m))
 
 (cl:ensure-generic-function 'id_model-val :lambda-list '(m))
 (cl:defmethod id_model-val ((m <My_message>))
@@ -305,6 +345,42 @@
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'diff_gaze_z))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'box_h))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'box_w))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'box_x))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'box_y))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
@@ -476,6 +552,46 @@
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'diff_gaze_z) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'box_h) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'box_w) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'box_x) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'box_y) (roslisp-utils:decode-double-float-bits bits)))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
@@ -496,18 +612,22 @@
   "OpenFace/My_message")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<My_message>)))
   "Returns md5sum for a message object of type '<My_message>"
-  "eaefa0165f2d618047dc9a1f3aa528e7")
+  "6c24d8c3301b17cfb2282a729b262e0a")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'My_message)))
   "Returns md5sum for a message object of type 'My_message"
-  "eaefa0165f2d618047dc9a1f3aa528e7")
+  "6c24d8c3301b17cfb2282a729b262e0a")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<My_message>)))
   "Returns full string definition for message of type '<My_message>"
-  (cl:format cl:nil "float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%int64 id_model~%~%~%"))
+  (cl:format cl:nil "float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%float64 box_h~%float64 box_w~%float64 box_x~%float64 box_y~%int64 id_model~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'My_message)))
   "Returns full string definition for message of type 'My_message"
-  (cl:format cl:nil "float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%int64 id_model~%~%~%"))
+  (cl:format cl:nil "float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%float64 box_h~%float64 box_w~%float64 box_x~%float64 box_y~%int64 id_model~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <My_message>))
   (cl:+ 0
+     8
+     8
+     8
+     8
      8
      8
      8
@@ -543,5 +663,9 @@
     (cl:cons ':diff_gaze_x (diff_gaze_x msg))
     (cl:cons ':diff_gaze_y (diff_gaze_y msg))
     (cl:cons ':diff_gaze_z (diff_gaze_z msg))
+    (cl:cons ':box_h (box_h msg))
+    (cl:cons ':box_w (box_w msg))
+    (cl:cons ':box_x (box_x msg))
+    (cl:cons ':box_y (box_y msg))
     (cl:cons ':id_model (id_model msg))
 ))

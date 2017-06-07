@@ -119,12 +119,12 @@ struct MD5Sum< ::OpenFace::pose_message_all_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4c482323fdb463d20f58a3cfde1a5056";
+    return "51e4daddc2b2462433d7aa5eabd0c8a1";
   }
 
   static const char* value(const ::OpenFace::pose_message_all_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4c482323fdb463d2ULL;
-  static const uint64_t static_value2 = 0x0f58a3cfde1a5056ULL;
+  static const uint64_t static_value1 = 0x51e4daddc2b24624ULL;
+  static const uint64_t static_value2 = 0x33d7aa5eabd0c8a1ULL;
 };
 
 template<class ContainerAllocator>
@@ -164,7 +164,12 @@ float64 gaze_1_rot_z\n\
 float64 diff_gaze_x\n\
 float64 diff_gaze_y\n\
 float64 diff_gaze_z\n\
+float64 box_h\n\
+float64 box_w\n\
+float64 box_x\n\
+float64 box_y\n\
 int64 id_model\n\
+\n\
 ";
   }
 

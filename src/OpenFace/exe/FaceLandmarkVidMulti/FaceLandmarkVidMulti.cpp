@@ -351,7 +351,7 @@ public:
 			if(cv_ptr->image.channels() == 3)
 			{
 	
-				cv::cvtColor(cv_ptr->image, grayscale_image, CV_BGR2GRAY);				
+				cv::cvtColor(cv_ptr->image, grayscale_image, CV_BGR2GRAY);
 			}
 			else
 			{	
@@ -692,38 +692,46 @@ public:
 					std::cout << model << "this is the difference in gaze" <<  difference_gaze << std::endl;
 
 
+					//estimate the bonding box to print the results
+
+					cv::Rect_<double> model_rect = clnf_models[model].GetBoundingBox();
+
+
+					//Publish the results to ROS node
 					
+				    //To send pose
+					OpenFace::My_message pose_gaze_inf;
+	  				
+	  				pose_gaze_inf.pose_tra_x = pose_estimate(0);
+	  				pose_gaze_inf.pose_tra_y = pose_estimate(1);
+					pose_gaze_inf.pose_tra_z = pose_estimate(2);
+					pose_gaze_inf.pose_rot_x = orientation_f[0];
+	  				pose_gaze_inf.pose_rot_y = orientation_f[1];
+					pose_gaze_inf.pose_rot_z = orientation_f[2];
+
+					pose_gaze_inf.gaze_0_rot_x = gaze0_models[model].x;
+	  				pose_gaze_inf.gaze_0_rot_y = gaze0_models[model].y;
+					pose_gaze_inf.gaze_0_rot_z = gaze0_models[model].z;
+					pose_gaze_inf.gaze_1_rot_x = gaze1_models[model].x;
+	  				pose_gaze_inf.gaze_1_rot_y = gaze1_models[model].y;
+					pose_gaze_inf.gaze_1_rot_z = gaze1_models[model].z;
+
+					pose_gaze_inf.diff_gaze_x = difference_gaze[0];
+					pose_gaze_inf.diff_gaze_y = difference_gaze[1];
+					pose_gaze_inf.diff_gaze_z = difference_gaze[2];
+
+					pose_gaze_inf.box_h = model_rect.height;
+					pose_gaze_inf.box_w = model_rect.width;
+					pose_gaze_inf.box_x =model_rect.x;
+					pose_gaze_inf.box_y =model_rect.y;
+							  
 
 
-				//Publish the results to ROS node
-				
-			    //To send pose
-				OpenFace::My_message pose_gaze_inf;
-  				
-  				pose_gaze_inf.pose_tra_x = pose_estimate(0);
-  				pose_gaze_inf.pose_tra_y = pose_estimate(1);
-				pose_gaze_inf.pose_tra_z = pose_estimate(2);
-				pose_gaze_inf.pose_rot_x = orientation_f[0];
-  				pose_gaze_inf.pose_rot_y = orientation_f[1];
-				pose_gaze_inf.pose_rot_z = orientation_f[2];
-
-				pose_gaze_inf.gaze_0_rot_x = gaze0_models[model].x;
-  				pose_gaze_inf.gaze_0_rot_y = gaze0_models[model].y;
-				pose_gaze_inf.gaze_0_rot_z = gaze0_models[model].z;
-				pose_gaze_inf.gaze_1_rot_x = gaze1_models[model].x;
-  				pose_gaze_inf.gaze_1_rot_y = gaze1_models[model].y;
-				pose_gaze_inf.gaze_1_rot_z = gaze1_models[model].z;
-
-				pose_gaze_inf.diff_gaze_x = difference_gaze[0];
-				pose_gaze_inf.diff_gaze_y = difference_gaze[1];
-				pose_gaze_inf.diff_gaze_z = difference_gaze[2];
+					pose_gaze_inf.id_model = model;
 
 
-				pose_gaze_inf.id_model = model;
-
-
-				all_pose_gaze_inf.person.push_back(pose_gaze_inf);
-				total_models=total_models+1;
+					all_pose_gaze_inf.person.push_back(pose_gaze_inf);
+					total_models=total_models+1;
 
 				}
 			}

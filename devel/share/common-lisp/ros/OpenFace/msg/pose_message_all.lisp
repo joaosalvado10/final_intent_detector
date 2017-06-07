@@ -88,16 +88,16 @@
   "OpenFace/pose_message_all")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<pose_message_all>)))
   "Returns md5sum for a message object of type '<pose_message_all>"
-  "4c482323fdb463d20f58a3cfde1a5056")
+  "51e4daddc2b2462433d7aa5eabd0c8a1")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'pose_message_all)))
   "Returns md5sum for a message object of type 'pose_message_all"
-  "4c482323fdb463d20f58a3cfde1a5056")
+  "51e4daddc2b2462433d7aa5eabd0c8a1")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<pose_message_all>)))
   "Returns full string definition for message of type '<pose_message_all>"
-  (cl:format cl:nil "My_message[]  person~%int64 total_models~%~%~%================================================================================~%MSG: OpenFace/My_message~%float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%int64 id_model~%~%~%"))
+  (cl:format cl:nil "My_message[]  person~%int64 total_models~%~%~%================================================================================~%MSG: OpenFace/My_message~%float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%float64 box_h~%float64 box_w~%float64 box_x~%float64 box_y~%int64 id_model~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'pose_message_all)))
   "Returns full string definition for message of type 'pose_message_all"
-  (cl:format cl:nil "My_message[]  person~%int64 total_models~%~%~%================================================================================~%MSG: OpenFace/My_message~%float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%int64 id_model~%~%~%"))
+  (cl:format cl:nil "My_message[]  person~%int64 total_models~%~%~%================================================================================~%MSG: OpenFace/My_message~%float64 pose_tra_x~%float64 pose_tra_y~%float64 pose_tra_z~%float64 pose_rot_x~%float64 pose_rot_y~%float64 pose_rot_z~%float64 gaze_0_rot_x~%float64 gaze_0_rot_y~%float64 gaze_0_rot_z~%float64 gaze_1_rot_x~%float64 gaze_1_rot_y~%float64 gaze_1_rot_z~%float64 diff_gaze_x~%float64 diff_gaze_y~%float64 diff_gaze_z~%float64 box_h~%float64 box_w~%float64 box_x~%float64 box_y~%int64 id_model~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <pose_message_all>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'person) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))

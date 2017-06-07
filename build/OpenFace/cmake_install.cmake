@@ -37,6 +37,8 @@ if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMP
     "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg"
     "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg"
     "/home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg"
+    "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
+    "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg"
     )
 endif()
 

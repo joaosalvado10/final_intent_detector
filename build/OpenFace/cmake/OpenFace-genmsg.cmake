@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "OpenFace: 3 messages, 0 services")
+message(STATUS "OpenFace: 5 messages, 0 services")
 
 set(MSG_I_FLAGS "-IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg;-Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg")
 
@@ -18,6 +18,16 @@ add_custom_target(OpenFace_generate_messages ALL)
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg" NAME_WE)
 add_custom_target(_OpenFace_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "OpenFace" "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg" ""
+)
+
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg" NAME_WE)
+add_custom_target(_OpenFace_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "OpenFace" "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg" ""
+)
+
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg" NAME_WE)
+add_custom_target(_OpenFace_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "OpenFace" "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg" "OpenFace/intent_msg"
 )
 
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg" NAME_WE)
@@ -40,6 +50,18 @@ _generate_msg_cpp(OpenFace
   "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/OpenFace
+)
+_generate_msg_cpp(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/OpenFace
+)
+_generate_msg_cpp(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg"
+  "${MSG_I_FLAGS}"
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/OpenFace
 )
 _generate_msg_cpp(OpenFace
@@ -71,6 +93,10 @@ add_dependencies(OpenFace_generate_messages OpenFace_generate_messages_cpp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_cpp _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_cpp _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_cpp _OpenFace_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_cpp _OpenFace_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg" NAME_WE)
@@ -89,6 +115,18 @@ _generate_msg_lisp(OpenFace
   "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/OpenFace
+)
+_generate_msg_lisp(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/OpenFace
+)
+_generate_msg_lisp(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg"
+  "${MSG_I_FLAGS}"
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/OpenFace
 )
 _generate_msg_lisp(OpenFace
@@ -120,6 +158,10 @@ add_dependencies(OpenFace_generate_messages OpenFace_generate_messages_lisp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_lisp _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_lisp _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_lisp _OpenFace_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_lisp _OpenFace_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg" NAME_WE)
@@ -138,6 +180,18 @@ _generate_msg_py(OpenFace
   "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/OpenFace
+)
+_generate_msg_py(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/OpenFace
+)
+_generate_msg_py(OpenFace
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg"
+  "${MSG_I_FLAGS}"
+  "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/OpenFace
 )
 _generate_msg_py(OpenFace
@@ -168,6 +222,10 @@ add_dependencies(OpenFace_generate_messages OpenFace_generate_messages_py)
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_py _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg" NAME_WE)
+add_dependencies(OpenFace_generate_messages_py _OpenFace_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_py _OpenFace_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg" NAME_WE)
 add_dependencies(OpenFace_generate_messages_py _OpenFace_generate_messages_check_deps_${_filename})

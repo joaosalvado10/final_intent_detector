@@ -12,6 +12,11 @@ from bson.objectid import ObjectId
 from OpenFace.msg import My_message
 from OpenFace.msg import pose_message_all
 
+from OpenFace.msg import intent_msg
+from OpenFace.msg import intent_msg_all
+
+
+
 import argparse
 import glob
 import os
@@ -26,8 +31,43 @@ import sklearn
 from sklearn import svm
 import ast
 
+
+
+
+#NEED TO CREATE A GLOBAL CLASS TO  BE UPDATED ALONG THE TIME!!!!!!!!!!!
+
+
+#Global variables
+#last 10 frames , aprox 1 sec
+Global_values_of_interaction = [0]*10
+global_index=0
+
+
+
+
+class global_persons:
+
+    def __init__(self):
+        persons_list=[]
+
+    def update_persons(self,objct_with_new_persons):
+        #check the number of persons
+        #everyone
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
 class Pose_detection:
-        def __init__(self,pose_tra_x,pose_tra_y,pose_tra_z,pose_rot_x,pose_rot_y,pose_rot_z,gaze_0_x,gaze_0_y,gaze_0_z,gaze_1_x,gaze_1_y,gaze_1_z,id_p):
+        def __init__(self,pose_tra_x,pose_tra_y,pose_tra_z,pose_rot_x,pose_rot_y,pose_rot_z,gaze_0_x,gaze_0_y,gaze_0_z,gaze_1_x,gaze_1_y,gaze_1_z,id_p,boxw,boxh,boxx,boxy):
             self.ptx = pose_tra_x
             self.pty = pose_tra_y
             self.ptz = pose_tra_z
@@ -49,9 +89,16 @@ class Pose_detection:
             self.looking=0
 
 
+            self.box_wp=boxw
+            self.box_hp=boxh
+            self.box_xp=boxx
+            self.box_yp=boxy
+
+
         def looking_camera(self,clf):
             #using svm to do the classification
-            vect=[self.prx,self.pry,self.prz]
+            #using only x and y in the moment
+            vect=[self.prx,self.pry]#,self.prz]
             pred = clf.predict(vect)
             self.looking=pred
             return pred
@@ -79,6 +126,11 @@ class interaction_detect:
         self.number_pose_Detected=max_element_pose
         self.number_gesture_Detected=max_element_gest
         self.number_of_persons=0
+        self.wbox={}
+        self.hbox={}
+        self.xbox={}
+        self.ybox={}
+
 
 
     def matching(self,vector_pose_detections,vector_gesture_detection,matrix):
@@ -95,137 +147,194 @@ class interaction_detect:
         list_of_dict_value = []
         dict_of_vectors={}
 
-        try:
-            for i in range(self.number_pose_Detected):
+        print("NUMBER POSE DETECTED",self.number_pose_Detected)
 
-                #Here we create the person and save if it looking to robot or not
-
-                self.person_id_list.append(i)
-                self.dict_looking[i] = vector_pose_detections[i].looking
-                aux_norm_2=[]
-
-                #Create a dictionary for values
-
-                dict_for_values = {}
-
-                print("gaze coordinates")
-                print(vector_pose_detections[i].ptx)
-                print(vector_pose_detections[i].pty)
-                print(vector_pose_detections[i].ptz)
-
-                #the distance between that person 'i' and model's person for gesture 'j'
-                for j in range(self.number_gesture_Detected):
-
-                    #CALCULATE THE DISNTACE, NOT DONE YET!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                    kinect_point = (vector_gesture_detection[j].head_pose_x,vector_gesture_detection[j].head_pose_y,vector_gesture_detection[j].head_pose_z)
-                    gaze_point = (vector_pose_detections[i].ptx,vector_pose_detections[i].pty,vector_pose_detections[i].ptz)
-                    distance_cal = distance.euclidean(kinect_point,gaze_point)
-
-                    print("kinect coordinates")
-                    print(vector_gesture_detection[j].head_pose_x)
-                    print(vector_gesture_detection[j].head_pose_y)
-                    print(vector_gesture_detection[j].head_pose_z)
+        print("NUMBER gestures DETECTED",self.number_gesture_Detected)
 
 
-                    print("the distance calculated is", distance_cal)
+
+        #try:
+        for i in range(self.number_pose_Detected):
+
+            #Here we create the person and save if it looking to robot or not
+
+            self.person_id_list.append(i)
 
 
-                    #Dict to save the index of each distance
-                    dict_for_values[distance_cal] = j
+
+            aux_norm_2=[]
+
+            #Create a dictionary for values
+
+            dict_for_values = {}
+
+            #print("gaze coordinates")
+            #print(vector_pose_detections[i].ptx)
+            #print(vector_pose_detections[i].pty)
+            #print(vector_pose_detections[i].ptz)
+
+            #the distance between that person 'i' and model's person for gesture 'j'
+            for j in range(self.number_gesture_Detected):
+
+                #calculate the distance
+                kinect_point = (vector_gesture_detection[j].head_pose_x,vector_gesture_detection[j].head_pose_y,vector_gesture_detection[j].head_pose_z)
+                gaze_point = (vector_pose_detections[i].ptx,vector_pose_detections[i].pty,vector_pose_detections[i].ptz)
+                distance_cal = distance.euclidean(kinect_point,gaze_point)
+
+                #print("kinect coordinates")
+                #print(vector_gesture_detection[j].head_pose_x)
+                #print(vector_gesture_detection[j].head_pose_y)
+                #print(vector_gesture_detection[j].head_pose_z)
 
 
-                    aux_norm_2.append(distance_cal)
+                #print("the distance calculated is", distance_cal)
+
 
                 #Dict to save the index of each distance
-                list_of_dict_value.append(dict_for_values)
-                #Dict to save the index of each vector of distance
-                dict_of_vectors[tuple(aux_norm_2)]=i
-                vector_norm_2_pose_gesture.append(aux_norm_2)
-
-            #Now that i have the distances between them, i have to do the matching
-
-            #Start atributing first the small distance
-
-            aux_vector_norm_2_pose_gesture=vector_norm_2_pose_gesture[:]
+                dict_for_values[distance_cal] = j
 
 
-            for k in range(len(vector_norm_2_pose_gesture)):
+                aux_norm_2.append(distance_cal)
 
-                #Find first the min vector of all of them
-                min_vector = min(aux_vector_norm_2_pose_gesture)
+            #Dict to save the index of each distance
+            list_of_dict_value.append(dict_for_values)
 
-                #GET THE REAL INDEX OF THAT VECTOR(POSE INDEX)  FROM DICT OF VECTORS
-                index_original_vector_gaze = dict_of_vectors[tuple(min_vector)]
+            #Dict to save the index of each vector of distance
+            dict_of_vectors[tuple(aux_norm_2)]=i
+            vector_norm_2_pose_gesture.append(aux_norm_2)
 
-                #Get the index of min vector in the actual non atributed
-                index_min_vector = aux_vector_norm_2_pose_gesture.index(min_vector)
+        #Now that i have the distances between them, i have to do the matching
 
-                #get min value of min vector to do the matching in the non atributed
-                min_value = min(min_vector)
+        #Start atributing first the small distance
 
-                #GET THE REAL INDEX OF THAT VALUE(GSTURE INDEX)  FROM DICT OF VALUES
-                index_original_value_gesture = list_of_dict_value[index_original_vector_gaze][min_value]
+        aux_vector_norm_2_pose_gesture=vector_norm_2_pose_gesture[:]
 
+        #print ("VECOTRRRRRRR vector norm range!!!!!!!!!!",aux_vector_norm_2_pose_gesture)
 
-                #Do the matching only if the distance the euclidian distance is less than 2 meters
-                #to prevent a case where there are 2 persons vailabel one looking and the other doing a gesture
+        for k in range(len(vector_norm_2_pose_gesture)):
 
-                thresould_distance=1.7
-                if (min_value < thresould_distance ):
-                    self.dict_gesture[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].gesture
+            #Find first the min vector of all of them
+            min_vector = min(aux_vector_norm_2_pose_gesture)
 
-                    #Atribute values for pose of that person
-                    self.dict_head_posex[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_x
-                    self.dict_head_posey[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_y
-                    self.dict_head_posez[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_z
+            #GET THE REAL INDEX OF THAT VECTOR(POSE INDEX)  FROM DICT OF VECTORS
+            index_original_vector_gaze = dict_of_vectors[tuple(min_vector)]
 
+            #Get the index of min vector in the actual non atributed
+            index_min_vector = aux_vector_norm_2_pose_gesture.index(min_vector)
 
+            #get min value of min vector to do the matching in the non atributed
+            min_value = min(min_vector)
 
-
-
-                #increse the number of persons
-                self.number_of_persons = self.number_of_persons+1
-
-                #Pop the assign vector
-                new_vector = aux_vector_norm_2_pose_gesture.pop(index_min_vector)
-
-                #del the value in dict and update the dict
-                #dict_of_vectors[new_vector] = dict_of_vectors[min_vector]
-                #del dict_of_vectors[min_vector]
+            #GET THE REAL INDEX OF THAT VALUE(GSTURE INDEX)  FROM DICT OF VALUES
+            index_original_value_gesture = list_of_dict_value[index_original_vector_gaze][min_value]
 
 
+            #Do the matching only if the distance the euclidian distance is less than 2 meters
+            #to prevent a case where there are 2 persons vailabel one looking and the other doing a gesture
 
-                #Pop the elements from the list with the index atributed and update the dict of vectors
-                for p in range(len(aux_vector_norm_2_pose_gesture)):
+            thresould_distance=100.7
+            #if (min_value < thresould_distance ):
 
-                    index_of_vector_to_update = dict_of_vectors[tuple(aux_vector_norm_2_pose_gesture[p])]
-                    #UPDATE AUX VECTOR NORM 2 BY removing the element corresponding to the chosen index
+            self.dict_gesture[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].gesture
+
+            #Atribute values for pose of that person
+            self.dict_head_posex[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_x
+            self.dict_head_posey[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_y
+            self.dict_head_posez[index_original_vector_gaze] = vector_gesture_detection[index_original_value_gesture].head_pose_z
+            self.number_of_persons+=1
 
 
-                    for value in aux_vector_norm_2_pose_gesture[p]:
-                        if(list_of_dict_value[index_of_vector_to_update][value] == index_original_value_gesture):
-
-                            #AUX
-                            aux_vector_bef_pop = aux_vector_norm_2_pose_gesture[p][:]
-
-                            #THEN remove It FROM the list
-                            aux_vector_norm_2_pose_gesture[p].remove(value)
-
-                            #Update the dict
-                            dict_of_vectors[aux_vector_norm_2_pose_gesture[p]] = dict_of_vectors[aux_vector_bef_pop]
-                            del dict_of_vectors[tuple(aux_vector_bef_pop)]
-
-        except:
-            print "No persons being detected!"
+            self.dict_looking[index_original_vector_gaze] = vector_pose_detections[index_original_vector_gaze].looking
+            #atribute the bonding box
+            self.hbox[index_original_vector_gaze] =  vector_pose_detections[index_original_vector_gaze].box_hp
+            self.wbox[index_original_vector_gaze] =  vector_pose_detections[index_original_vector_gaze].box_wp
+            self.xbox[index_original_vector_gaze] =  vector_pose_detections[index_original_vector_gaze].box_xp
+            self.ybox[index_original_vector_gaze] =  vector_pose_detections[index_original_vector_gaze].box_yp
 
 
 
 
-    def print_interactions(self):
+
+
+
+
+
+            #Pop the assign vector
+            new_vector = aux_vector_norm_2_pose_gesture.pop(index_min_vector)
+
+            #del the value in dict and update the dict
+            #dict_of_vectors[new_vector] = dict_of_vectors[min_vector]
+            #del dict_of_vectors[min_vector]
+
+
+
+            #Pop the elements from the list with the index atributed and update the dict of vectors
+            for p in range(len(aux_vector_norm_2_pose_gesture)):
+
+                index_of_vector_to_update = dict_of_vectors[tuple(aux_vector_norm_2_pose_gesture[p])]
+                #UPDATE AUX VECTOR NORM 2 BY removing the element corresponding to the chosen index
+
+
+                for value in aux_vector_norm_2_pose_gesture[p]:
+                    if(list_of_dict_value[index_of_vector_to_update][value] == index_original_value_gesture):
+
+                        #AUX
+                        aux_vector_bef_pop = aux_vector_norm_2_pose_gesture[p][:]
+
+                        #THEN remove It FROM the list
+                        aux_vector_norm_2_pose_gesture[p].remove(value)
+
+                        #Update the dict
+                        dict_of_vectors[tuple(aux_vector_norm_2_pose_gesture[p])] = dict_of_vectors[tuple(aux_vector_bef_pop)]
+                        del dict_of_vectors[tuple(aux_vector_bef_pop)]
+
+
+        print("THIS IS THE FINAL MATCHING HERE!!!!!!!! for x",self.dict_head_posex)
+
+
+        #except:
+            #print "No persons being detected!"
+
+
+
+
+    def print_interactions(self,pub):
+
+        global global_index
+
+
+        msg_all_interactions_results= intent_msg_all()
+        msg_all_interactions_results.total_models = self.number_of_persons
+
         print("this are the interactions results")
+
+
         for i in range(self.number_of_persons):
 
+
+            #print(i)
+            #print(self.dict_head_posex)
+            #print(self.number_of_persons)
+
+            msg_interaction = intent_msg()
+            msg_interaction.pose_tra_x = self.dict_head_posex[i]
+            msg_interaction.pose_tra_y=  self.dict_head_posey[i]
+            msg_interaction.pose_tra_z=  self.dict_head_posez[i]
+            msg_interaction.looking =    self.dict_looking[i]
+            msg_interaction.gesture =    self.dict_gesture[i]
+            msg_interaction.result_interact = (self.dict_gesture[i]!=0 and self.dict_looking[i]==1)
+            msg_interaction.box_h=self.hbox[i]
+            msg_interaction.box_w=self.wbox[i]
+            msg_interaction.box_x=self.xbox[i]
+            msg_interaction.box_y=self.ybox[i]
+            msg_interaction.id_model =i
+
+
+            msg_all_interactions_results.intent_person.append(msg_interaction);
+
+
+
+            '''
             print("Person with id:")
             print(i)
             print("At the pose :")
@@ -238,13 +347,36 @@ class interaction_detect:
 
             print("The result of looking is:")
             print( self.dict_looking[i])
-
-            print("THE RESULT OF INTERACTION INTENT DETECTION IS")
+            '''
+            print("THE DISCRETE RESULT OF INTERACTION INTENT DETECTION IS")
             if(self.dict_gesture[i]!=0 and self.dict_looking[i]==1 ):
                 print("YES!!!!!!!!!!!")
+                Global_values_of_interaction[global_index]=1
             else:
                 print("NO")
+                Global_values_of_interaction[global_index]=0
 
+
+            if global_index == 9:
+                global_index=0
+            else:
+                global_index+=1
+
+            print (self.number_of_persons)
+
+            #print the continuos result using median
+
+
+            #THIS IS ABSOLUTLY WRONG!!!!!!!!!!!!!!!!!!!!!!! NEED A GLOBAL VALUES FOR EVERY PERSON :/
+
+            '''
+            print("THE GLOBAL VALUES",Global_values_of_interaction)
+            if(Global_values_of_interaction.count(1)> Global_values_of_interaction.count(0)):
+                print("PERSON WANTS TO INTERACT NOW!!!!!!!!!!!")
+            else:
+                print("person do not want to interact :( ")
+            '''
+        pub.publish(msg_all_interactions_results)
 
 
 
@@ -253,6 +385,7 @@ def gaze_callback(data,args):
 
     db = args[0]
     clf =args[1]
+    pub= args[2]
     #Every time a it is received a pose of someone, it is necessary to check if that person is looking to the camera and if it
     #  doing a gesture or not
 
@@ -262,7 +395,7 @@ def gaze_callback(data,args):
     #here it is saved all information from gaze and pose detector
     for i in range(data.total_models):
         #creating a new person
-        new_person = Pose_detection(data.person[i].pose_tra_x,data.person[i].pose_tra_y,data.person[i].pose_tra_z,data.person[i].pose_rot_x,data.person[i].pose_rot_y,data.person[i].pose_rot_z,data.person[i].gaze_0_rot_x,data.person[i].gaze_0_rot_y,data.person[i].gaze_0_rot_z,data.person[i].gaze_1_rot_x,data.person[i].gaze_1_rot_y,data.person[i].gaze_1_rot_z,data.person[i].id_model)
+        new_person = Pose_detection(data.person[i].pose_tra_x,data.person[i].pose_tra_y,data.person[i].pose_tra_z,data.person[i].pose_rot_x,data.person[i].pose_rot_y,data.person[i].pose_rot_z,data.person[i].gaze_0_rot_x,data.person[i].gaze_0_rot_y,data.person[i].gaze_0_rot_z,data.person[i].gaze_1_rot_x,data.person[i].gaze_1_rot_y,data.person[i].gaze_1_rot_z,data.person[i].id_model,data.person[i].box_h,data.person[i].box_w,data.person[i].box_x,data.person[i].box_y)
         #Check using the information taken from the gaze and pose detector who is looking to camera
         new_person.looking_camera(clf)
         #append to persons detected
@@ -281,8 +414,8 @@ def gaze_callback(data,args):
     for valid_number in db.number_valid.find().sort("_id",pymongo.DESCENDING).limit(1):
 
         valid_models=valid_number['valid_number']
-        print("number of valid models")
-        print(valid_models)
+        #print("number of valid models")
+        #print(valid_models)
 
     #Persobs detected by gesture detector
     persons_gesture_det=[]
@@ -295,6 +428,9 @@ def gaze_callback(data,args):
             data_dict=cursor
             new_person_gest = gesture_detection(cursor['PersonID'],cursor['Head_pose_x'],cursor['Head_pose_y'],cursor['Head_pose_z'],cursor['gesture_done'])
             persons_gesture_det.append(new_person_gest)
+
+
+    #print("THIS IS THE LEN OF GESTURE DETECTION!!!!!!!",len(persons_gesture_det))
 
     #Now it is available who did the gesture and who is looking to camera, this will be used to detect if the person wants to interact
 
@@ -336,7 +472,7 @@ def gaze_callback(data,args):
 
     #Translaction
     #x_distance_between_kinect_and_Gaze camera  in kinect referential
-    x_dist=0.5
+    x_dist=0
     y_dist=0
     z_dist=0
     for i in range(len(persons_gaze_pose_det)):
@@ -355,12 +491,21 @@ def gaze_callback(data,args):
     interaction_detector.matching(persons_gaze_pose_det,persons_gesture_det,matrix)
 
 
-    print("start printing")
+    #print("start printing")
 
-    try:
-        interaction_detector.print_interactions()
+    #print interactions and results
+    #try:
+    interaction_detector.print_interactions(pub)
+    '''
     except:
         print "No persons being detected!"
+        msg_all_interactions_results = intent_msg_all()
+        msg_all_interactions_results.total_models = interaction_detector.number_of_persons
+        pub.publish(msg_all_interactions_results)
+    '''
+
+
+
 
 
 
@@ -377,7 +522,17 @@ def listener(db,clf):
     # run simultaneously.
     rospy.init_node('intention_detector', anonymous=True)
 
-    rospy.Subscriber('pose_gaze',pose_message_all , gaze_callback,(db,clf))
+
+    pub = rospy.Publisher('results_interaction_intent', intent_msg_all, queue_size=10)
+
+    rospy.Subscriber('pose_gaze',pose_message_all , gaze_callback,(db,clf,pub))
+
+
+
+
+
+
+
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
@@ -425,12 +580,12 @@ def main():
         if(tail[0]=='n'):
             for line in file:
                 line_list=ast.literal_eval(line)
-                points.append(line_list)
+                points.append(line_list[0:2])
                 label.append(0)
         if(tail[0]=='l'):
             for line in file:
                 line_list=ast.literal_eval(line)
-                points.append(line_list)
+                points.append(line_list[0:2])
                 label.append(1)
 
 

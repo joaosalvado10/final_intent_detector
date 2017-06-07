@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/jorgematos/image_transport_ws/build
 include OpenFace/CMakeFiles/OpenFace_generate_messages_cpp.dir/progress.make
 
 OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/My_message.h
+OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg.h
+OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h
 OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h
 OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h
 
@@ -64,11 +66,24 @@ OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_trans
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from OpenFace/My_message.msg"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/include/OpenFace -e /opt/ros/indigo/share/gencpp/cmake/..
 
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg.h: /opt/ros/indigo/lib/gencpp/gen_cpp.py
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg.h: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg.h: /opt/ros/indigo/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from OpenFace/intent_msg.msg"
+	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/include/OpenFace -e /opt/ros/indigo/share/gencpp/cmake/..
+
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h: /opt/ros/indigo/lib/gencpp/gen_cpp.py
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg
+/home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h: /opt/ros/indigo/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from OpenFace/intent_msg_all.msg"
+	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/include/OpenFace -e /opt/ros/indigo/share/gencpp/cmake/..
+
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h: /opt/ros/indigo/lib/gencpp/gen_cpp.py
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h: /home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h: /home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h: /opt/ros/indigo/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from OpenFace/pose_message_all.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from OpenFace/pose_message_all.msg"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/include/OpenFace -e /opt/ros/indigo/share/gencpp/cmake/..
 
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h: /opt/ros/indigo/lib/gencpp/gen_cpp.py
@@ -76,11 +91,13 @@ OpenFace/CMakeFiles/OpenFace_generate_messages_cpp: /home/jorgematos/image_trans
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h: /opt/ros/indigo/share/sensor_msgs/msg/Image.msg
 /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h: /opt/ros/indigo/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from OpenFace/ResizedImage.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from OpenFace/ResizedImage.msg"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/include/OpenFace -e /opt/ros/indigo/share/gencpp/cmake/..
 
 OpenFace_generate_messages_cpp: OpenFace/CMakeFiles/OpenFace_generate_messages_cpp
 OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/My_message.h
+OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg.h
+OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/intent_msg_all.h
 OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/pose_message_all.h
 OpenFace_generate_messages_cpp: /home/jorgematos/image_transport_ws/devel/include/OpenFace/ResizedImage.h
 OpenFace_generate_messages_cpp: OpenFace/CMakeFiles/OpenFace_generate_messages_cpp.dir/build.make

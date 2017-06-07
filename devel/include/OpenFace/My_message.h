@@ -39,6 +39,10 @@ struct My_message_
     , diff_gaze_x(0.0)
     , diff_gaze_y(0.0)
     , diff_gaze_z(0.0)
+    , box_h(0.0)
+    , box_w(0.0)
+    , box_x(0.0)
+    , box_y(0.0)
     , id_model(0)  {
     }
   My_message_(const ContainerAllocator& _alloc)
@@ -57,6 +61,10 @@ struct My_message_
     , diff_gaze_x(0.0)
     , diff_gaze_y(0.0)
     , diff_gaze_z(0.0)
+    , box_h(0.0)
+    , box_w(0.0)
+    , box_x(0.0)
+    , box_y(0.0)
     , id_model(0)  {
   (void)_alloc;
     }
@@ -107,6 +115,18 @@ struct My_message_
 
    typedef double _diff_gaze_z_type;
   _diff_gaze_z_type diff_gaze_z;
+
+   typedef double _box_h_type;
+  _box_h_type box_h;
+
+   typedef double _box_w_type;
+  _box_w_type box_w;
+
+   typedef double _box_x_type;
+  _box_x_type box_x;
+
+   typedef double _box_y_type;
+  _box_y_type box_y;
 
    typedef int64_t _id_model_type;
   _id_model_type id_model;
@@ -188,12 +208,12 @@ struct MD5Sum< ::OpenFace::My_message_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "eaefa0165f2d618047dc9a1f3aa528e7";
+    return "6c24d8c3301b17cfb2282a729b262e0a";
   }
 
   static const char* value(const ::OpenFace::My_message_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xeaefa0165f2d6180ULL;
-  static const uint64_t static_value2 = 0x47dc9a1f3aa528e7ULL;
+  static const uint64_t static_value1 = 0x6c24d8c3301b17cfULL;
+  static const uint64_t static_value2 = 0xb2282a729b262e0aULL;
 };
 
 template<class ContainerAllocator>
@@ -227,7 +247,12 @@ float64 gaze_1_rot_z\n\
 float64 diff_gaze_x\n\
 float64 diff_gaze_y\n\
 float64 diff_gaze_z\n\
+float64 box_h\n\
+float64 box_w\n\
+float64 box_x\n\
+float64 box_y\n\
 int64 id_model\n\
+\n\
 ";
   }
 
@@ -261,6 +286,10 @@ namespace serialization
       stream.next(m.diff_gaze_x);
       stream.next(m.diff_gaze_y);
       stream.next(m.diff_gaze_z);
+      stream.next(m.box_h);
+      stream.next(m.box_w);
+      stream.next(m.box_x);
+      stream.next(m.box_y);
       stream.next(m.id_model);
     }
 
@@ -310,6 +339,14 @@ struct Printer< ::OpenFace::My_message_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.diff_gaze_y);
     s << indent << "diff_gaze_z: ";
     Printer<double>::stream(s, indent + "  ", v.diff_gaze_z);
+    s << indent << "box_h: ";
+    Printer<double>::stream(s, indent + "  ", v.box_h);
+    s << indent << "box_w: ";
+    Printer<double>::stream(s, indent + "  ", v.box_w);
+    s << indent << "box_x: ";
+    Printer<double>::stream(s, indent + "  ", v.box_x);
+    s << indent << "box_y: ";
+    Printer<double>::stream(s, indent + "  ", v.box_y);
     s << indent << "id_model: ";
     Printer<int64_t>::stream(s, indent + "  ", v.id_model);
   }

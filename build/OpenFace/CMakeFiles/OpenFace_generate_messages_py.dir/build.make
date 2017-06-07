@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/jorgematos/image_transport_ws/build
 include OpenFace/CMakeFiles/OpenFace_generate_messages_py.dir/progress.make
 
 OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_My_message.py
+OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg.py
+OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py
 OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py
 OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py
 OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py
@@ -64,28 +66,43 @@ OpenFace/CMakeFiles/OpenFace_generate_messages_py: /home/jorgematos/image_transp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG OpenFace/My_message"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg
 
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg.py: /opt/ros/indigo/lib/genpy/genmsg_py.py
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG OpenFace/intent_msg"
+	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg
+
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py: /opt/ros/indigo/lib/genpy/genmsg_py.py
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG OpenFace/intent_msg_all"
+	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg
+
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py: /opt/ros/indigo/lib/genpy/genmsg_py.py
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG OpenFace/pose_message_all"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG OpenFace/pose_message_all"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg
 
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py: /opt/ros/indigo/lib/genpy/genmsg_py.py
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py: /home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py: /opt/ros/indigo/share/sensor_msgs/msg/Image.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG OpenFace/ResizedImage"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG OpenFace/ResizedImage"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg -IOpenFace:/home/jorgematos/image_transport_ws/src/OpenFace/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/indigo/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg -p OpenFace -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg
 
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /opt/ros/indigo/lib/genpy/genmsg_py.py
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_My_message.py
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg.py
+/home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py
 /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python msg __init__.py for OpenFace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jorgematos/image_transport_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python msg __init__.py for OpenFace"
 	cd /home/jorgematos/image_transport_ws/build/OpenFace && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg --initpy
 
 OpenFace_generate_messages_py: OpenFace/CMakeFiles/OpenFace_generate_messages_py
 OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_My_message.py
+OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg.py
+OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_intent_msg_all.py
 OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_pose_message_all.py
 OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/_ResizedImage.py
 OpenFace_generate_messages_py: /home/jorgematos/image_transport_ws/devel/lib/python2.7/dist-packages/OpenFace/msg/__init__.py

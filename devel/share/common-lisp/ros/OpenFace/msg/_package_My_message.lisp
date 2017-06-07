@@ -29,6 +29,14 @@
           DIFF_GAZE_Y
           DIFF_GAZE_Z-VAL
           DIFF_GAZE_Z
+          BOX_H-VAL
+          BOX_H
+          BOX_W-VAL
+          BOX_W
+          BOX_X-VAL
+          BOX_X
+          BOX_Y-VAL
+          BOX_Y
           ID_MODEL-VAL
           ID_MODEL
 ))

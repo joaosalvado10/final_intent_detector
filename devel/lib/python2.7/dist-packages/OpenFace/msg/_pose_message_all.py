@@ -8,7 +8,7 @@ import struct
 import OpenFace.msg
 
 class pose_message_all(genpy.Message):
-  _md5sum = "4c482323fdb463d20f58a3cfde1a5056"
+  _md5sum = "51e4daddc2b2462433d7aa5eabd0c8a1"
   _type = "OpenFace/pose_message_all"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """My_message[]  person
@@ -32,7 +32,12 @@ float64 gaze_1_rot_z
 float64 diff_gaze_x
 float64 diff_gaze_y
 float64 diff_gaze_z
+float64 box_h
+float64 box_w
+float64 box_x
+float64 box_y
 int64 id_model
+
 """
   __slots__ = ['person','total_models']
   _slot_types = ['OpenFace/My_message[]','int64']
@@ -78,7 +83,7 @@ int64 id_model
       buff.write(_struct_I.pack(length))
       for val1 in self.person:
         _x = val1
-        buff.write(_struct_15dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model))
+        buff.write(_struct_19dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model))
       buff.write(_struct_q.pack(self.total_models))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
@@ -100,8 +105,8 @@ int64 id_model
         val1 = OpenFace.msg.My_message()
         _x = val1
         start = end
-        end += 128
-        (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model,) = _struct_15dq.unpack(str[start:end])
+        end += 160
+        (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model,) = _struct_19dq.unpack(str[start:end])
         self.person.append(val1)
       start = end
       end += 8
@@ -122,7 +127,7 @@ int64 id_model
       buff.write(_struct_I.pack(length))
       for val1 in self.person:
         _x = val1
-        buff.write(_struct_15dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model))
+        buff.write(_struct_19dq.pack(_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model))
       buff.write(_struct_q.pack(self.total_models))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
@@ -145,8 +150,8 @@ int64 id_model
         val1 = OpenFace.msg.My_message()
         _x = val1
         start = end
-        end += 128
-        (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.id_model,) = _struct_15dq.unpack(str[start:end])
+        end += 160
+        (_x.pose_tra_x, _x.pose_tra_y, _x.pose_tra_z, _x.pose_rot_x, _x.pose_rot_y, _x.pose_rot_z, _x.gaze_0_rot_x, _x.gaze_0_rot_y, _x.gaze_0_rot_z, _x.gaze_1_rot_x, _x.gaze_1_rot_y, _x.gaze_1_rot_z, _x.diff_gaze_x, _x.diff_gaze_y, _x.diff_gaze_z, _x.box_h, _x.box_w, _x.box_x, _x.box_y, _x.id_model,) = _struct_19dq.unpack(str[start:end])
         self.person.append(val1)
       start = end
       end += 8
@@ -157,4 +162,4 @@ int64 id_model
 
 _struct_I = genpy.struct_I
 _struct_q = struct.Struct("<q")
-_struct_15dq = struct.Struct("<15dq")
+_struct_19dq = struct.Struct("<19dq")

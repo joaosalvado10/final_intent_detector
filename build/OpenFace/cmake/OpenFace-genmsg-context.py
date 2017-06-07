@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg"
+messages_str = "/home/jorgematos/image_transport_ws/src/OpenFace/msg/ResizedImage.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/My_message.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/pose_message_all.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg.msg;/home/jorgematos/image_transport_ws/src/OpenFace/msg/intent_msg_all.msg"
 services_str = ""
 pkg_name = "OpenFace"
 dependencies_str = "std_msgs;sensor_msgs"

@@ -21,7 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
  add_message_files(
    DIRECTORY msg
-   FILES ResizedImage.msg My_message.msg pose_message_all.msg
+   FILES ResizedImage.msg My_message.msg pose_message_all.msg intent_msg.msg intent_msg_all.msg 
  )
 
 
@@ -255,6 +255,14 @@ add_executable(my_subscriber src/my_subscriber.cpp)
 add_dependencies(my_subscriber ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 target_link_libraries(my_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
+
+# add the subscriber intent
+#add_executable(subscribe_intent src/subscribe_intent.cpp)
+#add_dependencies(subscribe_intent ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+#target_link_libraries(subscribe_intent ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+
+
 # add the plugin example
 #add_library(resized_publisher src/manifest.cpp src/resized_publisher.cpp src/resized_subscriber.cpp)
 #add_dependencies(resized_publisher ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
@@ -262,7 +270,7 @@ target_link_libraries(my_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 # Mark executables and/or libraries for installation
-install(TARGETS my_publisher my_subscriber #resized_publisher
+install(TARGETS my_publisher my_subscriber #subscribe_intent #resized_publisher
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -294,7 +302,11 @@ add_subdirectory(exe/FaceLandmarkVidMulti)
 
 
 
-#add_executable(intention_detector src/Intention_detector.cpp)
-#target_link_libraries(intention_detector ${catkin_LIBRARIES})
+#add_executable(intention_detector1 src/Intention_detector.cpp)
+#target_link_libraries(intention_detector1 ${catkin_LIBRARIES})
+
+
+
+
 
 

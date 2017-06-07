@@ -621,6 +621,45 @@ OpenFace_generate_messages/fast:
 .PHONY : OpenFace_generate_messages/fast
 
 #=============================================================================
+# Target rules for targets named OpenFace_genpy
+
+# Build rule for target.
+OpenFace_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 OpenFace_genpy
+.PHONY : OpenFace_genpy
+
+# fast build rule for target.
+OpenFace_genpy/fast:
+	$(MAKE) -f OpenFace/CMakeFiles/OpenFace_genpy.dir/build.make OpenFace/CMakeFiles/OpenFace_genpy.dir/build
+.PHONY : OpenFace_genpy/fast
+
+#=============================================================================
+# Target rules for targets named _OpenFace_generate_messages_check_deps_intent_msg_all
+
+# Build rule for target.
+_OpenFace_generate_messages_check_deps_intent_msg_all: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _OpenFace_generate_messages_check_deps_intent_msg_all
+.PHONY : _OpenFace_generate_messages_check_deps_intent_msg_all
+
+# fast build rule for target.
+_OpenFace_generate_messages_check_deps_intent_msg_all/fast:
+	$(MAKE) -f OpenFace/CMakeFiles/_OpenFace_generate_messages_check_deps_intent_msg_all.dir/build.make OpenFace/CMakeFiles/_OpenFace_generate_messages_check_deps_intent_msg_all.dir/build
+.PHONY : _OpenFace_generate_messages_check_deps_intent_msg_all/fast
+
+#=============================================================================
+# Target rules for targets named _OpenFace_generate_messages_check_deps_intent_msg
+
+# Build rule for target.
+_OpenFace_generate_messages_check_deps_intent_msg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _OpenFace_generate_messages_check_deps_intent_msg
+.PHONY : _OpenFace_generate_messages_check_deps_intent_msg
+
+# fast build rule for target.
+_OpenFace_generate_messages_check_deps_intent_msg/fast:
+	$(MAKE) -f OpenFace/CMakeFiles/_OpenFace_generate_messages_check_deps_intent_msg.dir/build.make OpenFace/CMakeFiles/_OpenFace_generate_messages_check_deps_intent_msg.dir/build
+.PHONY : _OpenFace_generate_messages_check_deps_intent_msg/fast
+
+#=============================================================================
 # Target rules for targets named OpenFace_generate_messages_cpp
 
 # Build rule for target.
@@ -827,19 +866,6 @@ my_subscriber: cmake_check_build_system
 my_subscriber/fast:
 	$(MAKE) -f OpenFace/CMakeFiles/my_subscriber.dir/build.make OpenFace/CMakeFiles/my_subscriber.dir/build
 .PHONY : my_subscriber/fast
-
-#=============================================================================
-# Target rules for targets named OpenFace_genpy
-
-# Build rule for target.
-OpenFace_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 OpenFace_genpy
-.PHONY : OpenFace_genpy
-
-# fast build rule for target.
-OpenFace_genpy/fast:
-	$(MAKE) -f OpenFace/CMakeFiles/OpenFace_genpy.dir/build.make OpenFace/CMakeFiles/OpenFace_genpy.dir/build
-.PHONY : OpenFace_genpy/fast
 
 #=============================================================================
 # Target rules for targets named dlib
@@ -1201,6 +1227,9 @@ help:
 	@echo "... run_tests_cv_bridge_nosetests_python_bindings.py"
 	@echo "... _run_tests_cv_bridge"
 	@echo "... OpenFace_generate_messages"
+	@echo "... OpenFace_genpy"
+	@echo "... _OpenFace_generate_messages_check_deps_intent_msg_all"
+	@echo "... _OpenFace_generate_messages_check_deps_intent_msg"
 	@echo "... OpenFace_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
@@ -1217,7 +1246,6 @@ help:
 	@echo "... OpenFace_generate_messages_py"
 	@echo "... my_publisher"
 	@echo "... my_subscriber"
-	@echo "... OpenFace_genpy"
 	@echo "... dlib"
 	@echo "... LandmarkDetector"
 	@echo "... FaceAnalyser"

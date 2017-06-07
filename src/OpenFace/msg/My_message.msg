@@ -13,4 +13,9 @@ float64 gaze_1_rot_z
 float64 diff_gaze_x
 float64 diff_gaze_y
 float64 diff_gaze_z
+float64 box_h
+float64 box_w
+float64 box_x
+float64 box_y
 int64 id_model
+
